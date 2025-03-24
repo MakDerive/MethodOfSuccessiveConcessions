@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="ru" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Метод последовательных уступок</title>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        min-height: 1000px;
+        padding: 20px;
+    }
+
+    .objective-group, .concession-group, .constraint-group {
+        margin-bottom: 20px; /* Увеличиваем отступ между группами */
+    }
+
+    input[type="text"] {
+        width: 70%; /* Ширина на всю доступную область */
+        max-width: 300px; /* Максимальная ширина */
+        height: 30px; /* Высота поля */
+        padding: 10px; /* Внутренние отступы */
+        font-size: 16px; /* Размер шрифта */
+        border: 1px solid #ccc; /* Граница */
+        border-radius: 4px; /* Скругление углов */
+        margin-bottom: 10px; /* Отступ снизу */
+        margin-right: 15px;
+    }
+
+    select {
+        width: 150px; /* Ширина выпадающего списка */
+        height: 40px; /* Высота */
+        font-size: 16px; /* Размер шрифта */
+        padding: 5px; /* Внутренние отступы */
+        border: 1px solid #ccc; /* Граница */
+        border-radius: 4px; /* Скругление углов */
+        margin-left: 10px; /* Отступ слева */
+    }
+
+    .preview {
+        font-weight: bold;
+        margin-left: 10px;
+    }
+
+    .result {
+        margin-top: 20px;
+    }
+
+    sub {
+        font-size: 0.8em; /* Уменьшаем размер индекса */
+        vertical-align: sub; /* Выравниваем индекс по нижнему краю */
+    }
+
+    button {
+        padding: 10px 20px; /* Внутренние отступы */
+        font-size: 16px; /* Размер шрифта */
+        border: none; /* Убираем границу */
+        border-radius: 4px; /* Скругление углов */
+        background-color: #007bff; /* Цвет фона */
+        color: white; /* Цвет текста */
+        cursor: pointer; /* Курсор в виде указателя */
+        margin-bottom: 20px; /* Отступ снизу */
+    }
+
+    button:hover {
+        background-color: #0056b3; /* Цвет фона при наведении */
+    }
+
+    p {
+        font-size: 14px;
+        color: #555;
+    }
+</style>
+</head>
+<body>
+    <h1>Метод последовательных уступок</h1>
+	
+	<p> Как вводить  уравнения: {десятичное число} * x_{индекс переменной} +(-)  {десятичное число} * x_{индекс переменной}... </p>
+	<p> Пример ввода: 2*x_1 + x_2 - 3.5*x_3 </p>
+    <h2>Целевые функции</h2>
+    <div id="objective-container"></div>
+    <button id="add-objective">Добавить функцию цели</button>
+	
+    <h2>Значения уступок</h2>
+    <div id="concession-container"></div>
+	<br>
+	<p> Как вводить  ограничения: {десятичное число} * x_{индекс переменной} +(-)  {десятичное число} * x_{индекс переменной}...  {знак неравенства (<=, >=, =)}  десятичное число</p>
+	<p>Пример ввода: x_1 + 3*x_2 + 2.5*x_3 >=1</p>
+    <h2>Ограничения</h2>
+    <div id="constraint-container"></div>
+    <button id="add-constraint">Добавить ограничение</button>
+
+    <br><br>
+	<p style = "font-size: 16px">Если нет вывода результатов значит либо решения нет, либо некорректный ввод</p>
+	<div id="result-container" class="result">
+		<h2>Результаты оптимизации</h2>
+		<div id="function-results">
+			<h3>Результаты функций:</h3>
+			<!-- Сюда будут добавлены результаты функций -->
+		</div>
+		<div id="variable-results">
+			<h3>Значения переменных:</h3>
+			<!-- Сюда будут добавлены значения переменных -->
+		</div>
+	</div>
+	<script src="script.js"></script>
+</body>
+</html>
