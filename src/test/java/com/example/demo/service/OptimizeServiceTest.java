@@ -25,6 +25,7 @@ public class OptimizeServiceTest {
 		OutputData result = new OptimizeService().optimize(data);
 		assertArrayEquals(expectedCoefficients, result.coefficientsResults);
 		assertArrayEquals( expectedFunctionResults, result.functionResults );
+		System.out.println("hello");
 	}
 	 
 	static Stream<Arguments> provideTestData() {
