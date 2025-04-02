@@ -65,7 +65,6 @@ public class OptimizeService {
 		}
 		optimalValues = round(optimalValues);
 		resultFunctions = round(resultFunctions);
-		System.out.println(Arrays.toString(optimalValues));
 		return new OutputData(resultFunctions,optimalValues);
 	}
 	public double[] round(double[] arr) {
